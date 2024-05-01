@@ -30,7 +30,7 @@ public class WebSocketHandler {
 
     private final ConnectionManager connectionManager = new ConnectionManager();
 
-    private final Gson gson = new Gson();
+    private final Gson gson = WebsocketGson.getBuilder().create();
 
     private static final WebSocketHandler INSTANCE = new WebSocketHandler();
 

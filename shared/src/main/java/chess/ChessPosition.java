@@ -27,6 +27,12 @@ public class ChessPosition {
         this.col = col;
     }
 
+    public ChessPosition(String parse) {
+        if (parse.length() != 2) throw new IllegalArgumentException("Input must be length 2! " + parse);
+        row = Integer.parseInt(parse.substring(1, 2));
+        col = parse.charAt(0) - 96;
+    }
+
 
     /**
      * @return which row this position is in
