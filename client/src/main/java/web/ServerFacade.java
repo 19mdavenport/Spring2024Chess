@@ -52,7 +52,9 @@ public class ServerFacade {
 
     public AuthData login(UserData request) {
         try {
-            return new UserService(dataAccess).login(request);
+            AuthData out = new UserService(dataAccess).login(request);
+            DataCache.getInstance().setAuthToken(out.authToken());
+            return out;
         } catch (ChessServerException e) {
             throw new ResponseException("Error connecting to server", e);
         }
@@ -70,7 +72,9 @@ public class ServerFacade {
 
     public AuthData register(UserData request) {
         try {
-            return new UserService(dataAccess).register(request);
+            AuthData out = new UserService(dataAccess).register(request);
+            DataCache.getInstance().setAuthToken(out.authToken());
+            return out;
         } catch (ChessServerException e) {
             throw new ResponseException("Error connecting to server", e);
         }
