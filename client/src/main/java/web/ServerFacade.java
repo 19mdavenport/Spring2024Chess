@@ -3,7 +3,6 @@ package web;
 import com.google.gson.Gson;
 import data.DataCache;
 import model.*;
-import server.Server;
 
 import java.io.*;
 import java.net.HttpURLConnection;
