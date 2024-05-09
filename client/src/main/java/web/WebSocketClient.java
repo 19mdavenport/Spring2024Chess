@@ -1,5 +1,6 @@
 package web;
 
+import chess.ChessGame;
 import chess.ChessMove;
 import com.google.gson.Gson;
 import data.DataCache;
@@ -65,5 +66,11 @@ public class WebSocketClient extends Endpoint implements MessageHandler.Whole<St
 
     private void sendMessage(UserGameCommand command) throws IOException {
         session.getBasicRemote().sendText(gson.toJson(command));
+    }
+
+    public static interface WebSocketClientObserver {
+        void loadGame(ChessGame game);
+        void notify(String message);
+        void error(String message);
     }
 }

@@ -1,5 +1,6 @@
 package server;
 
+import chess.ChessGame;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessException;
 import dataaccess.memory.MemoryDataAccess;
@@ -10,11 +11,27 @@ import service.ChessServerException;
 import service.RequestItemTakenException;
 import service.UnauthorizedException;
 import spark.*;
+import web.WebSocketClient;
 import websocket.WebSocketHandler;
 
 import java.net.HttpURLConnection;
 
-public class Server {
+public class Server implements WebSocketClient.WebSocketClientObserver {
+
+    @Override
+    public void loadGame(ChessGame game) {
+        System.out.println("TROLOLOLOLOLOLOLOLOLOLOLOLOL");
+    }
+
+    @Override
+    public void notify(String message) {
+        System.out.println("TROLOLOLOLOLOLOLOLOLOLOLOLOL");
+    }
+
+    @Override
+    public void error(String message) {
+        System.err.println("TROLOLOLOLOLOLOLOLOLOLOLOLOL");
+    }
 
     public int run(int desiredPort) {
         Spark.port(desiredPort);

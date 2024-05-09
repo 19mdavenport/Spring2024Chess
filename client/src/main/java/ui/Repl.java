@@ -2,14 +2,12 @@ package ui;
 
 import chess.ChessGame;
 import data.DataCache;
-import web.WebSocketClientObserver;
-import websocket.messages.ServerMessage;
+import web.WebSocketClient;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Scanner;
 
-public class Repl implements WebSocketClientObserver {
+public class Repl implements WebSocketClient.WebSocketClientObserver {
 
     public void run() {
         System.out.println(EscapeSequences.BLACK_QUEEN + "Welcome to Chess. Sign in to start." + EscapeSequences.BLACK_QUEEN);

@@ -4,7 +4,6 @@ import chess.ChessGame;
 import ui.*;
 import web.ServerFacade;
 import web.WebSocketClient;
-import web.WebSocketClientObserver;
 
 import javax.websocket.DeploymentException;
 import java.io.IOException;
@@ -44,7 +43,7 @@ public class DataCache {
     private WebSocketClient webSocketClient;
 
 
-    public void setRunOptions(String host, int port, WebSocketClientObserver observer)
+    public void setRunOptions(String host, int port, WebSocketClient.WebSocketClientObserver observer)
             throws DeploymentException, URISyntaxException, IOException {
         facade = new ServerFacade("http://%s:%d".formatted(host, port));
         webSocketClient = new WebSocketClient(observer, host, port);
@@ -76,12 +75,9 @@ public class DataCache {
     }
 
 
-
-
     public UserInterface getUi() {
         return userInterface;
     }
-
 
 
     public State getState() {
