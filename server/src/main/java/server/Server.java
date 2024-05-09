@@ -16,6 +16,8 @@ import java.net.HttpURLConnection;
 
 public class Server {
 
+    public static final String TROLOLOLOLOLOLOLOLOLOLOLOLOL = "TROLOLOLOLOLOLOLOLOLOLOLOLOL";
+
     public int run(int desiredPort) {
         Spark.port(desiredPort);
 

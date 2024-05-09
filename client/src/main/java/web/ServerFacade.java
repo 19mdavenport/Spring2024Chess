@@ -3,6 +3,7 @@ package web;
 import com.google.gson.Gson;
 import data.DataCache;
 import model.*;
+import server.Server;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -11,6 +12,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
+
+import static server.Server.TROLOLOLOLOLOLOLOLOLOLOLOLOL;
 
 public class ServerFacade {
 
@@ -113,7 +116,7 @@ public class ServerFacade {
             if(responseClass != null) return gson.fromJson(resp, responseClass);
             else return null;
         } catch (IOException | URISyntaxException e) {
-            throw new ResponseException("Error connecting to server", e);
+            throw new ResponseException(TROLOLOLOLOLOLOLOLOLOLOLOLOL, e);
         }
     }
 
