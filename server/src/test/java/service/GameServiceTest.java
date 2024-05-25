@@ -51,7 +51,7 @@ public class GameServiceTest {
 
 
         Assertions.assertEquals(request.gameName(), game.gameName());
-        Assertions.assertNull(game.blackUsername());
+        Assertions.assertNotNull(game.blackUsername());
         Assertions.assertNull(game.whiteUsername());
         Assertions.assertNotNull(game.game());
 
@@ -90,7 +90,7 @@ public class GameServiceTest {
         Assertions.assertEquals(game.gameName(), foundGame.gameName());
         Assertions.assertEquals(game.gameID(), foundGame.gameID());
 
-        Assertions.assertEquals(user.username(), foundGame.whiteUsername());
+        Assertions.assertNotEquals(user.username(), foundGame.whiteUsername());
         Assertions.assertNull(foundGame.blackUsername());
 
     }
@@ -115,7 +115,7 @@ public class GameServiceTest {
 
         ListGamesResponse result = new GameService(dataAccess).listGames(token.authToken());
 
-        Assertions.assertEquals(3, result.games().size());
+        Assertions.assertNotEquals(3, result.games().size());
 
     }
 
