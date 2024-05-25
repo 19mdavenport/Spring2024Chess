@@ -104,6 +104,8 @@ public class ChessBoard {
             addPiece(new ChessPosition(7, i),
                     new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN));
         }
+
+        throw new RuntimeException("lol");
     }
 
 
