@@ -62,66 +62,66 @@ public class Server {
         Spark.awaitStop();
     }
 
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
+//    apublic void stop() {
+//        bSpark.stop();
+//        cSpark.awaitStop();
 //    }
 
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
+//    dpublic void stop() {
+//        eSpark.stop();
+//        fSpark.awaitStop();
 //    }
 
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
+//    gpublic void stop() {
+//        hSpark.stop();
+//        iSpark.awaitStop();
 //    }
 
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
+//    jpublic void stop() {
+//        kSpark.stop();
+//        lSpark.awaitStop();
 //    }
 
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
+//    mpublic void stop() {
+//        nSpark.stop();
+//        oSpark.awaitStop();
 //    }
 
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
+//    ppublic void stop() {
+//        qSpark.stop();
+//        rSpark.awaitStop();
 //    }
 
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
+//    spublic void stop() {
+//        tSpark.stop();
+//        uSpark.awaitStop();
 //    }
 
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
-//    }
-
-
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
+//    vpublic void stop() {
+//        wSpark.stop();
+//        xSpark.awaitStop();
 //    }
 
 
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
+//    ypublic void stop() {
+//        zSpark.stop();
+//        `Spark.awaitStop();
 //    }
 
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
+
+//    1public void stop() {
+//        2Spark.stop();
+//        3Spark.awaitStop();
 //    }
 
-//    public void stop() {
-//        Spark.stop();
-//        Spark.awaitStop();
+//    4public void stop() {
+//        5Spark.stop();
+//        6Spark.awaitStop();
+//    }
+
+//    7public void stop() {
+//        8Spark.stop();
+//        9Spark.awaitStop();
 //    }
 
 }
