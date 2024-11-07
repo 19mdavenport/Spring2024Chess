@@ -115,10 +115,10 @@ public class WebSocketHandler {
     private void leave(Session session, String username, GameData game) throws IOException, DataAccessException {
         if (username.equals(game.whiteUsername())) {
             game = new GameData(game.gameID(), null, game.blackUsername(), game.gameName(), game.game());
-            dataAccess.getGameDAO().updateGame(game);
+            // dataAccess.getGameDAO().updateGame(game);
         } else if (username.equals(game.blackUsername())) {
             game = new GameData(game.gameID(), game.whiteUsername(), null, game.gameName(), game.game());
-            dataAccess.getGameDAO().updateGame(game);
+            // dataAccess.getGameDAO().updateGame(game);
         }
 
         connectionManager.removeSession(game.gameID(), session);
