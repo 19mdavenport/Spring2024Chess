@@ -48,7 +48,7 @@ public class DumbServiceTest {
     public void dumbTestTime() throws DataAccessException {
         int HELLO_woRlD = 7;
 
-        if(true) while(false) if(false) while(true) if(false == true) while (false != false) System.out.println("hi");
+        if(true) if(true) if(true) if(true) if(true) if(true) if(true) System.out.println("hi");
 
         //;
         //;
