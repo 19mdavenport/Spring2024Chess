@@ -363,7 +363,7 @@ public class WebSocketTests {
             assertMessages(inGameUser.username(), inGameExpectedTypes, messages.get(inGameUser.username()));
         }
         for(WebsocketUser otherUser : otherClients) {
-            assertMessages(otherUser.username(), new ServerMessage.ServerMessageType[0], messages.get(otherUser.username()));
+            assertMessages(otherUser.username(), types(), messages.get(otherUser.username()));
         }
     }
 
@@ -381,7 +381,6 @@ public class WebSocketTests {
                 }
             }
         } catch(AssertionError e) {
-            e.printStackTrace();
             Assertions.fail("Expected message types matching %s for %s, got %s"
                     .formatted(Arrays.toString(expectedTypes), username, messages.reversed()));
         }

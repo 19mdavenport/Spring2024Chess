@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static passoff.chess.TestUtilities.*;
-
 public class ChessBoardTests {
 
     @Test
@@ -33,12 +31,12 @@ public class ChessBoardTests {
     @Test
     @DisplayName("Reset Board")
     public void defaultGameBoard() {
-        var expectedBoard = defaultBoard();
+        var expectedBoard = TestUtilities.defaultBoard();
 
         var actualBoard = new ChessBoard();
         actualBoard.resetBoard();
 
-        Assertions.assertEquals(expectedBoard, actualBoard);
+        Assertions.assertEquals(expectedBoard, actualBoard, "Reset board did not create the correct board");
     }
 
 

@@ -32,9 +32,10 @@ public class ChessMoveTests {
     @DisplayName("Equals Testing")
     public void equalsTest() {
         Assertions.assertEquals(original, equal, "equals returned false for equal moves");
-        Assertions.assertNotEquals(original, startDifferent, "equals returned true for different moves");
-        Assertions.assertNotEquals(original, endDifferent, "equals returned true for different moves");
-        Assertions.assertNotEquals(original, promoteDifferent, "equals returned true for different moves");
+        String equalFailure = "equals returned true for different moves";
+        Assertions.assertNotEquals(original, startDifferent, equalFailure);
+        Assertions.assertNotEquals(original, endDifferent, equalFailure);
+        Assertions.assertNotEquals(original, promoteDifferent, equalFailure);
     }
 
     @Test
@@ -42,12 +43,10 @@ public class ChessMoveTests {
     public void hashTest() {
         Assertions.assertEquals(original.hashCode(), equal.hashCode(),
                 "hashCode returned different values for equal moves");
-        Assertions.assertNotEquals(original.hashCode(), startDifferent.hashCode(),
-                "hashCode returned the same value for different moves");
-        Assertions.assertNotEquals(original.hashCode(), endDifferent.hashCode(),
-                "hashCode returned the same value for different moves");
-        Assertions.assertNotEquals(original.hashCode(), promoteDifferent.hashCode(),
-                "hashCode returned the same value for different moves");
+        String hashCodeEqualFailure = "hashCode returned the same value for different moves";
+        Assertions.assertNotEquals(original.hashCode(), startDifferent.hashCode(), hashCodeEqualFailure);
+        Assertions.assertNotEquals(original.hashCode(), endDifferent.hashCode(), hashCodeEqualFailure);
+        Assertions.assertNotEquals(original.hashCode(), promoteDifferent.hashCode(), hashCodeEqualFailure);
     }
 
     @Test
