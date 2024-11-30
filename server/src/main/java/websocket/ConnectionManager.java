@@ -89,7 +89,6 @@ public class ConnectionManager {
     }
 
     public void clear() {
-        sessions.clear();
         for (Set<Session> set : sessions.values()) {
             for (Session session : set) {
                 if(session.isOpen()) {
@@ -97,5 +96,6 @@ public class ConnectionManager {
                 }
             }
         }
+        sessions.clear();
     }
 }

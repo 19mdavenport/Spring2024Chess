@@ -1,5 +1,6 @@
 package server;
 
+import com.google.gson.Gson;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessException;
 import dataaccess.mysql.MySqlDataAccess;
@@ -8,10 +9,14 @@ import service.BadRequestException;
 import service.ChessServerException;
 import service.RequestItemTakenException;
 import service.UnauthorizedException;
+import spark.Request;
+import spark.Response;
+import spark.Route;
 import spark.Spark;
 import websocket.WebSocketHandler;
 
 import java.net.HttpURLConnection;
+import java.util.Map;
 
 public class Server {
 
@@ -33,6 +38,8 @@ public class Server {
         Spark.webSocket("/ws", ws);
 
         // Register your endpoints and handle exceptions here.
+        Spark.get("/costume", (request, response) ->
+            Spark.halt(403, "<html><body><p>You are not authorized to view this costume</p></body></html>"));
         Spark.post("/user", new RegisterHandler(dataAccess));
 
         Spark.path("/session", () -> {

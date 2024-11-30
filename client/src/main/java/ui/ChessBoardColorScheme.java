@@ -11,9 +11,8 @@ public class ChessBoardColorScheme {
         WHITE_PIECE, BLACK_PIECE
     }
 
-    public static final List<ChessBoardColorScheme> COLOR_SCHEMES =
-            new ArrayList(List.of(
-                    new ChessBoardColorScheme(37, 0.46f, 0.6f, 0.12f, 0.39f, 0.495f, 0.88f, 0.12f),
+    public static final List<ChessBoardColorScheme> COLOR_SCHEMES = new ArrayList<>(
+            List.of(new ChessBoardColorScheme(37, 0.46f, 0.6f, 0.12f, 0.39f, 0.495f, 0.88f, 0.12f),
                     new ChessBoardColorScheme(208, 0.56f, 0.52f, 0.15f, 0.43f, 0.55f, 0.88f, 0.14f),
                     new ChessBoardColorScheme(265, 0.6f, 0.5f, 0.15f, 0.55f, 0.64f, 0.88f, 0.12f),
                     new ChessBoardColorScheme(300, 0.5f, 0.54f, 0.15f, 0.43f, 0.57f, 0.9f, 0.11f),
@@ -38,7 +37,7 @@ public class ChessBoardColorScheme {
 
 
     public ChessBoardColorScheme(float hue, float saturation, float border, float borderText, float darkSquare,
-                                  float lightSquare, float whitePiece, float blackPiece) {
+                                 float lightSquare, float whitePiece, float blackPiece) {
         this.hue = hue;
         this.saturation = saturation;
         this.border = border;
@@ -88,11 +87,20 @@ public class ChessBoardColorScheme {
 
     }
 
-    public String setColor(boolean text, int r, int g, int b) {
-        if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
+    /**
+     * Creates an escape sequence string that, if printed, should set the console text or background to any RGB color
+     *
+     * @param text  true if setting text color, false if setting background color
+     * @param red   amount of red 0-255
+     * @param green amount of green 0-255
+     * @param blue  amount of blue 0-255
+     * @return an escape sequence string that would set the console text or background to the specified color
+     */
+    private static String setColor(boolean text, int red, int green, int blue) {
+        if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255) {
             throw new IllegalArgumentException("Colors must be between 0 - 255");
         }
-        return String.format("\u001B[%s8;2;%d;%d;%dm", (text) ? "3" : "4", r, g, b);
+        return String.format("\u001B[%s8;2;%d;%d;%dm", (text) ? "3" : "4", red, green, blue);
     }
 
 

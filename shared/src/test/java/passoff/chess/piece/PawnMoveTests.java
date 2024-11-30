@@ -238,6 +238,177 @@ public class PawnMoveTests {
         );
     }
 
+    @Test
+    public void pawnMoveFromEdgeWhite() {
+        TestUtilities.validateMoves("""
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | |P|
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        """,
+                new ChessPosition(4, 8),
+                new int[][]{{5, 8}}
+        );
+    }
+
+    @Test
+    public void pawnMoveFromEdgeBlack() {
+        TestUtilities.validateMoves("""
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | |p|
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        """,
+                new ChessPosition(5, 8),
+                new int[][]{{4, 8}}
+        );
+    }
+
+    @Test
+    public void pawnCaptureFromEdgeWhite() {
+        TestUtilities.validateMoves("""
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | |r| |
+                        | | | | | | | |P|
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        """,
+                new ChessPosition(4, 8),
+                new int[][]{{5, 8}, {5, 7}}
+        );
+    }
+
+    @Test
+    public void pawnCaptureFromEdgeBlack() {
+        TestUtilities.validateMoves("""
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | |p|
+                        | | | | | | |R| |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        """,
+                new ChessPosition(5, 8),
+                new int[][]{{4, 8}, {4, 7}}
+        );
+    }
+
+    @Test
+    public void pawnCaptureFromStartWhite() {
+        TestUtilities.validateMoves("""
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | |r| | | | | |
+                        | | |r| | | | | |
+                        | | | |P| | | | |
+                        | | | | | | | | |
+                        """,
+                new ChessPosition(2, 4),
+                new int[][]{{3, 3}, {3, 4}, {4, 4}}
+        );
+    }
+
+    @Test
+    public void pawnCaptureFromStartBlack() {
+        TestUtilities.validateMoves("""
+                        | | | | | | | | |
+                        | | | |p| | | | |
+                        | | |R| | | | | |
+                        | | |R| | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        """,
+                new ChessPosition(7, 4),
+                new int[][]{{6, 4}, {5, 4}, {6, 3}}
+        );
+    }
+
+    @Test
+    public void captureAndPromoteWhite() {
+        validatePromotion("""
+                        | | |r| | | | | |
+                        | | | |P| | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        """,
+                new ChessPosition(7, 4),
+                new int[][]{{8, 3}, {8, 4}}
+        );
+    }
+
+    @Test
+    public void captureAndPromoteBlack() {
+        validatePromotion("""
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | |p| | | | |
+                        | | |R| | | | | |
+                        """,
+                new ChessPosition(2, 4),
+                new int[][]{{1, 3}, {1, 4}}
+        );
+    }
+
+    @Test
+    public void pawnCannotCaptureBackwardWhite() {
+        TestUtilities.validateMoves("""
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | |P| | | | | |
+                        | | |r|r| | | | |
+                        | | | | | | | | |
+                        """,
+                new ChessPosition(3, 3),
+                new int[][]{{4, 3}}
+        );
+    }
+
+    @Test
+    public void pawnCannotCaptureBackwardBlack() {
+        TestUtilities.validateMoves("""
+                        | | | | | | | | |
+                        | | |R|R| | | | |
+                        | | |p| | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        | | | | | | | | |
+                        """,
+                new ChessPosition(6, 3),
+                new int[][]{{5, 3}}
+        );
+    }
+
+
     private static void validatePromotion(String boardText, ChessPosition startingPosition, int[][] endPositions) {
         var board = TestUtilities.loadBoard(boardText);
         var testPiece = board.getPiece(startingPosition);

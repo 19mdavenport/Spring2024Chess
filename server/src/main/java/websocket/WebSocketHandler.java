@@ -113,6 +113,13 @@ public class WebSocketHandler {
 
 
     private void leave(Session session, String username, GameData game) throws IOException, DataAccessException {
+        connectionManager.removeSession(game.gameID(), session);
+
+        String message = String.format("User %s is no longer %s", username, positionInGame(username, game));
+        ServerMessage notify = new NotificationMessage(message);
+        String notifyJson = Serializer.serialize(notify);
+        connectionManager.broadcast(notifyJson, game.gameID(), session);
+
         if (username.equals(game.whiteUsername())) {
             game = new GameData(game.gameID(), null, game.blackUsername(), game.gameName(), game.game());
             dataAccess.getGameDAO().updateGame(game);
@@ -120,13 +127,6 @@ public class WebSocketHandler {
             game = new GameData(game.gameID(), game.whiteUsername(), null, game.gameName(), game.game());
             dataAccess.getGameDAO().updateGame(game);
         }
-
-        connectionManager.removeSession(game.gameID(), session);
-        String message = String.format("User %s is no longer %s", username, positionInGame(username, game));
-        ServerMessage notify = new NotificationMessage(message);
-        String notifyJson = Serializer.serialize(notify);
-
-        connectionManager.broadcast(notifyJson, game.gameID(), session);
     }
 
 

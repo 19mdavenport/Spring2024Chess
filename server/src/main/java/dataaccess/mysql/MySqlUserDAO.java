@@ -1,8 +1,10 @@
 package dataaccess.mysql;
 
+import com.google.gson.Gson;
 import dataaccess.DataAccessException;
 import dataaccess.UserDAO;
 import model.UserData;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class MySqlUserDAO extends MySqlDAO implements UserDAO {
     public MySqlUserDAO() throws DataAccessException {
@@ -21,11 +23,9 @@ public class MySqlUserDAO extends MySqlDAO implements UserDAO {
 
     @Override
     public UserData getUser(String username) throws DataAccessException {
-        return executeQuery("SELECT * FROM user WHERE username=?", (rs) -> {
-            return rs.next() ?
-                    new UserData(rs.getString("username"), rs.getString("password"), rs.getString("email")) :
-                    null;
-        }, username);
+        return executeQuery("SELECT * FROM user WHERE username=?", (rs) -> rs.next() ?
+                new UserData(rs.getString("username"), rs.getString("password"), rs.getString("email")) :
+                null, username);
     }
 
     @Override

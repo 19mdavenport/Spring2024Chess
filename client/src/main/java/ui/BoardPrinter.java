@@ -1,6 +1,7 @@
 package ui;
 
 import chess.ChessGame;
+import chess.ChessMove;
 import chess.ChessPiece;
 import chess.ChessPosition;
 import data.DataCache;
@@ -34,7 +35,7 @@ public class BoardPrinter {
         printHeader(colorScheme, perspective);
 
         Set<ChessPosition> highlight = (position != null && game.getBoard().getPiece(position) != null) ?
-                game.validMoves(position).stream().map(move -> move.getEndPosition()).collect(Collectors.toSet()) :
+                game.validMoves(position).stream().map(ChessMove::getEndPosition).collect(Collectors.toSet()) :
                 new HashSet<>();
 
         for (int i = 1; i <= 8; i++) {
