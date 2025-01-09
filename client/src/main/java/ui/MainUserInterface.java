@@ -32,11 +32,11 @@ public class MainUserInterface implements UserInterface {
     public String help() {
         return """
                 Options:
-                List current games: \"l\", \"list\"
-                Create a new game: \"c\", \"create\" <GAME NAME>
-                Join a game: \"j\", \"join\" <GAME ID> <COLOR>
-                Watch a game: \"w\", \"watch\" <GAME ID>
-                Logout: \"logout\"
+                List current games: "l", "list"
+                Create a new game: "c", "create" <GAME NAME>
+                Join a game: "j", "join" <GAME ID> <COLOR>
+                Watch a game: "w", "watch" <GAME ID>
+                Logout: "logout"
                 """;
     }
 
@@ -64,7 +64,7 @@ public class MainUserInterface implements UserInterface {
 
 
     private CommandOutput list() {
-        retreiveGames();
+        retrieveGames();
         if (games.isEmpty()) {
             return new CommandOutput("There are no open games", true);
         }
@@ -94,7 +94,7 @@ public class MainUserInterface implements UserInterface {
             out.append(" ".repeat(gameNameOffset - game.gameName().length()));
 
             if (game.whiteUsername() == null) {
-                out.append("White empty" + " ".repeat(whiteUsernameOffset - 4));
+                out.append("White empty").append(" ".repeat(whiteUsernameOffset - 4));
             } else {
                 out.append("White: ").append(game.whiteUsername());
                 out.append(" ".repeat(whiteUsernameOffset - game.whiteUsername().length()));
@@ -146,7 +146,7 @@ public class MainUserInterface implements UserInterface {
             return new CommandOutput(String.format("Unable to parse %s as a game number", args[0]), false);
         }
         if(games == null) {
-            retreiveGames();
+            retrieveGames();
         }
         if(gameNum < 1 || gameNum > games.size()) {
             return new CommandOutput("Invalid game number " + gameNum, false);
@@ -170,7 +170,7 @@ public class MainUserInterface implements UserInterface {
         return new CommandOutput("", true);
     }
 
-    private void retreiveGames() {
+    private void retrieveGames() {
         ListGamesResponse result = DataCache.getInstance().getFacade().listGames();
         games = new ArrayList<>(result.games());
         games.sort(Comparator.comparingInt(GameData::gameID));

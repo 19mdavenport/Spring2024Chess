@@ -21,10 +21,10 @@ public class LoginUserInterface implements UserInterface {
     public String help() {
         return """
         Options:
-        Login as an existing user: \"l\", \"login\" <USERNAME> <PASSWORD>
-        Register a new user: \"r\", \"register\" <USERNAME> <PASSWORD> <EMAIL>
-        Exit the program: \"q\", \"quit\"
-        Print this message: \"h\", \"help\"
+        Login as an existing user: "l", "login" <USERNAME> <PASSWORD>
+        Register a new user: "r", "register" <USERNAME> <PASSWORD> <EMAIL>
+        Exit the program: "q", "quit"
+        Print this message: "h", "help"
         """;
     }
 

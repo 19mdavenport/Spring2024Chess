@@ -30,10 +30,11 @@ public class GameUserInterface implements UserInterface {
                 Options:
                 Highlight legal moves: "hl", "highlight" <position> (e.g. f5)
                 Make a move: "m", "move", "make" <source> <destination> <optional promotion>(e.g. f5 e4 q)
-                Redraw Chess Board: "res", "resign"
+                Redraw Chess Board: "r", "redraw"
                 Change color scheme: "c", "colors" <color number> (enter no number to enter color scheme creator)
-                Resign from game: "resign"
+                Resign from game: "res", "resign"
                 Leave game: "leave"
+                Print this message: "h", "help"
                 """;
     }
 
@@ -71,7 +72,7 @@ public class GameUserInterface implements UserInterface {
         ChessPiece.PieceType promotion = null;
         if (args.length == 3) {
             if (args[2].length() != 1) {
-                return new CommandOutput("Could not parse %s as a piece type".formatted(args[3]), false);
+                return new CommandOutput("Could not parse %s as a piece type".formatted(args[2]), false);
             }
             switch (args[2].charAt(0)) {
                 case 'q' -> promotion = ChessPiece.PieceType.QUEEN;
@@ -85,7 +86,7 @@ public class GameUserInterface implements UserInterface {
                     return new CommandOutput("Cannot promote to pawn", false);
                 }
                 default -> {
-                    return new CommandOutput("Could not parse %s as a piece type".formatted(args[3]), false);
+                    return new CommandOutput("Could not parse %s as a piece type".formatted(args[2]), false);
                 }
             }
         }

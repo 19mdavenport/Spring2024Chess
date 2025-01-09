@@ -3,6 +3,7 @@ package server;
 import com.google.gson.Gson;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessException;
+import dataaccess.memory.MemoryDataAccess;
 import dataaccess.mysql.MySqlDataAccess;
 import handler.*;
 import service.BadRequestException;

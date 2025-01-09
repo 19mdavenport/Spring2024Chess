@@ -200,7 +200,7 @@ public class WebSocketHandler {
         String notifyJson = Serializer.serialize(notify);
         connectionManager.broadcast(notifyJson, game.gameID(), session);
 
-        notify = new NotificationMessage("You have resigned.");
+        notify = new NotificationMessage(String.format("You(%s) have resigned. %s wins.", username, opponent));
         notifyJson = Serializer.serialize(notify);
         connectionManager.sendMessage(session, notifyJson);
     }
